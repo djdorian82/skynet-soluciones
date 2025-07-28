@@ -228,7 +228,7 @@
     document.getElementById("contact-form").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      emailjs.sendForm("service_jy0ctci", "ID:template_6m78k1o", this)
+      emailjs.sendForm("service_jy0ctci", "template_6m78k1o", this)
         .then(() => alert("✅ ¡Mensaje enviado con éxito!"))
         .catch((err) => alert("❌ Error: " + JSON.stringify(err)));
     });

@@ -1,138 +1,277 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SKYNet Soluciones Informáticas</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f9fc;
-      color: #333;
-    }
-    header {
-      background: #0a3d62;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: #1e5a89;
-      padding: 10px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #0a3d62;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .service-card {
-      background: #eef3f9;
-      padding: 15px;
-      border-radius: 8px;
-    }
-    footer {
-      background: #0a3d62;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNet Soluciones Informáticas</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilo base para la fuente y el scroll suave */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Pequeña animación para la aparición de secciones */
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>SKYNet Soluciones Informáticas</h1>
-    <p>Soporte técnico integral en tecnologías de la información</p>
-  </header>  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#mision">Misión y Visión</a>
-    <a href="#contacto">Contacto</a>
-  </nav>  <section id="inicio">
-    <h2>Bienvenidos a SKYNet Soluciones Informáticas</h2>
-    <p>Ofrecemos servicios profesionales en mantenimiento, redes, software y soluciones tecnológicas para tu negocio o empresa. Nuestro objetivo es optimizar tu infraestructura informática de forma segura, eficiente y moderna.</p>
-  </section>  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Mantenimiento de Equipos</h3>
-        <p>Preventivo y correctivo de computadoras, laptops y servidores.</p>
-      </div>
-      <div class="service-card">
-        <h3>Asesoría y Optimización</h3>
-        <p>Instalación remota de paquetería, antivirus, software CAD, modelado y programas administrativos.</p>
-      </div>
-      <div class="service-card">
-        <h3>Punto de Venta (POS)</h3>
-        <p>Implementación y configuración de sistemas POS para negocios.</p>
-      </div>
-      <div class="service-card">
-        <h3>Redes e Internet</h3>
-        <p>Instalación, administración y mantenimiento de redes, enlaces inalámbricos y hotspots.</p>
-      </div>
-      <div class="service-card">
-        <h3>Control de Acceso y Videovigilancia</h3>
-        <p>Instalación de sistemas de control de acceso y cámaras de seguridad.</p>
-      </div>
-    </div>
-  </section>  <section id="mision">
-    <h2>Misión, Visión y Objetivos</h2>
-    <h3>Misión</h3>
-    <p>Brindar soluciones tecnológicas innovadoras y confiables que optimicen los recursos de nuestros clientes.</p>
-    <h3>Visión</h3>
-    <p>Ser líderes en soporte técnico y soluciones informáticas en la región, reconocidos por la calidad y confianza de nuestros servicios.</p>
-    <h3>Objetivos</h3>
-    <ul>
-      <li>Ofrecer soporte técnico eficiente y personalizado.</li>
-      <li>Implementar tecnologías modernas para optimizar procesos empresariales.</li>
-      <li>Fomentar la innovación y la mejora continua en nuestros servicios.</li>
-    </ul>
-  </section>  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>📧 Correo: <a href="mailto:contacto@skynetsoluciones.com">contacto@skynetsoluciones.com</a></p>
-    <form>
-      <label>Nombre:</label><br />
-      <input type="text" required /><br />
-      <label>Correo:</label><br />
-      <input type="email" required /><br />
-      <label>Mensaje:</label><br />
-      <textarea required></textarea><br />
-      <button type="submit">Enviar</button>
-    </form>
-  </section><a href="https://wa.me/5210000000000" class="whatsapp-button">WhatsApp</a>
+<body class="bg-gray-50 text-gray-800">
 
-  <footer>
-    <p>© 2025 SKYNet Soluciones Informáticas. Todos los derechos reservados.</p>
-  </footer>
+    <!-- ========== HEADER ========== -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#inicio" class="flex items-center">
+                        <!-- Logo de la empresa insertado aquí -->
+                        <img class="h-16 w-auto" src="skynet_informaricas.png" alt="Logo de SKYNet Soluciones Informáticas">
+                    </a>
+                </div>
+
+                <!-- Navegación para Desktop -->
+                <nav class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Inicio</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Servicios</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Nosotros</a>
+                    <a href="#contacto" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300 font-medium shadow">Contacto</a>
+                </nav>
+
+                <!-- Botón de Menú para Móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú para Móvil (oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+                <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Inicio</a>
+                <a href="#servicios" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Servicios</a>
+                <a href="#nosotros" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Nosotros</a>
+                <a href="#contacto" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main>
+
+        <!-- ========== SECCIÓN INICIO (HERO) ========== -->
+        <section id="inicio" class="relative min-h-[60vh] md:min-h-[80vh] flex items-center bg-gray-800">
+            <div class="absolute inset-0">
+                <img src="https://placehold.co/1920x1080/111827/FFFFFF?text=Tecnología+y+Redes" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/111827/FFFFFF?text=Imagen+no+disponible';"
+                     alt="Banner de tecnología y redes" class="w-full h-full object-cover opacity-30">
+            </div>
+            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                    <span class="text-blue-400">SKYNet</span> Soluciones Informáticas
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8">
+                    Tu aliado estratégico en tecnología. Ofrecemos soluciones integrales para optimizar, proteger y potenciar tu infraestructura de TI.
+                </p>
+                <a href="#servicios" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 duration-300 shadow-lg">
+                    Conoce Nuestros Servicios
+                </a>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN SERVICIOS ========== -->
+        <section id="servicios" class="py-16 sm:py-24 bg-white section-fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nuestros Servicios</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Soluciones tecnológicas a la medida de tus necesidades.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Servicio 1 -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Mantenimiento de Equipos</h3>
+                        <p class="text-gray-600">Mantenimiento preventivo y correctivo para Laptops y PCs, garantizando su óptimo rendimiento y vida útil.</p>
+                    </div>
+                    <!-- Servicio 2 -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
+                           <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Asesoría y Software</h3>
+                        <p class="text-gray-600">Instalación y optimización remota de paquetería, antivirus, software de diseño, CAD y programas administrativos.</p>
+                    </div>
+                    <!-- Servicio 3 -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Sistemas Punto de Venta (POS)</h3>
+                        <p class="text-gray-600">Implementamos sistemas POS eficientes para agilizar tus ventas, controlar inventarios y gestionar tu negocio.</p>
+                    </div>
+                    <!-- Servicio 4 -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 9.393a15 15 0 0121.212 0"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Redes y Conectividad</h3>
+                        <p class="text-gray-600">Instalación, administración y mantenimiento de redes, internet y enlaces inalámbricos (hotspots).</p>
+                    </div>
+                    <!-- Servicio 5 -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
+                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Control de Acceso</h3>
+                        <p class="text-gray-600">Sistemas de control de acceso biométricos o con tarjeta para garantizar la seguridad de tus instalaciones.</p>
+                    </div>
+                    <!-- Servicio 6 -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
+                             <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Videovigilancia (CCTV)</h3>
+                        <p class="text-gray-600">Instalación de cámaras de videovigilancia de alta definición para monitoreo y seguridad 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN NOSOTROS (MISIÓN, VISIÓN, OBJETIVOS) ========== -->
+        <section id="nosotros" class="py-16 sm:py-24 bg-gray-50 section-fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nuestra Filosofía</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Los pilares que guían nuestro trabajo y compromiso contigo.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- Misión -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Misión</h3>
+                        <p class="text-gray-600">Proveer soluciones tecnológicas innovadoras y confiables que impulsen el crecimiento y la eficiencia de nuestros clientes, actuando siempre con profesionalismo, integridad y un enfoque en el servicio personalizado.</p>
+                    </div>
+                    <!-- Visión -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Visión</h3>
+                        <p class="text-gray-600">Ser la empresa líder en soluciones informáticas en la región, reconocida por nuestra excelencia, adaptabilidad y por construir relaciones a largo plazo basadas en la confianza y los resultados.</p>
+                    </div>
+                    <!-- Objetivos -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Objetivos</h3>
+                        <p class="text-gray-600">Garantizar la satisfacción del cliente a través de un servicio rápido y efectivo. Mantenernos a la vanguardia tecnológica. Fomentar un crecimiento sostenible y expandir nuestra cartera de servicios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN CONTACTO ========== -->
+        <section id="contacto" class="py-16 sm:py-24 bg-white section-fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Contáctanos</h2>
+                        <p class="mt-4 text-lg text-gray-600">¿Listo para empezar? Envíanos un mensaje y te responderemos a la brevedad.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 sm:p-12 rounded-xl shadow-lg">
+                        <!-- El atributo action envía el formulario a un servicio como Formspree o a un endpoint de backend. -->
+                        <form action="mailto:contacto@skynetsoluciones.com" method="post" enctype="text/plain" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                                <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+                                <textarea name="message" id="message" rows="5" required class="mt-1 block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="w-full sm:w-auto inline-flex justify-center py-3 px-12 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300">
+                                    Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p>© 2024 SKYNet Soluciones Informáticas. Todos los derechos reservados.</p>
+            <p class="text-gray-400 text-sm mt-2">Diseño web profesional para potenciar tu negocio.</p>
+        </div>
+    </footer>
+
+    <!-- ========== BOTÓN FLOTANTE DE WHATSAPP ========== -->
+    <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20gustaría%20solicitar%20más%20información." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 z-40">
+        <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.225 4.485 4.635-1.218z"/>
+        </svg>
+    </a>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        // Script para el menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('#mobile-menu a, #mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Script para animaciones de scroll
+        const sections = document.querySelectorAll('.section-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
 </body>
 </html>
+
+

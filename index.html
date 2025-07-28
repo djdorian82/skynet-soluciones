@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKYNet Soluciones Informáticas</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,6 +15,8 @@
         /* Estilo base para la fuente y el scroll suave */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #0F0F0F; /* Fondo negro muy oscuro */
+            color: #E0E0E0; /* Texto gris claro */
         }
         /* Pequeña animación para la aparición de secciones */
         .section-fade-in {
@@ -28,33 +28,81 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Estilos para el formulario de contacto */
+        #contact-form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #contact-form input,
+        #contact-form textarea,
+        #contact-form button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+            border: 1px solid rgba(113, 113, 122, 0.4); /* Borde gris sutil con transparencia */
+            background-color: rgba(30, 30, 30, 0.7); /* Fondo oscuro transparente */
+            color: #E0E0E0;
+        }
+        #contact-form button {
+            background-color: #00BFFF; /* Azul neón */
+            color: #0F0F0F; /* Texto oscuro para el botón */
+            font-weight: 700; /* Tailwind's font-bold */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #contact-form button:hover {
+            background-color: #00A3D9; /* Azul neón más oscuro al hover */
+            transform: translateY(-2px);
+        }
+
+        /* Ajuste para el header con transparencia */
+        .header-transparent {
+            background-color: rgba(15, 15, 15, 0.7); /* Negro muy oscuro con 70% de opacidad */
+            backdrop-filter: blur(8px); /* Blur más pronunciado */
+            -webkit-backdrop-filter: blur(8px); /* Para compatibilidad con Safari */
+        }
+
+        /* Ajuste para las cards de servicios/nosotros */
+        .card-transparent {
+            background-color: rgba(30, 30, 30, 0.7); /* Gris oscuro con 70% de opacidad */
+            border: 1px solid rgba(0, 191, 255, 0.2); /* Borde azul neón sutil */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra oscura */
+        }
+        .card-transparent:hover {
+            box-shadow: 0 8px 12px rgba(0, 191, 255, 0.2); /* Sombra azul neón al hover */
+            transform: translateY(-4px); /* Efecto de elevación */
+        }
+
+        /* Colores de acento para íconos y títulos en secciones oscuras */
+        .text-accent-blue {
+            color: #00BFFF; /* Azul neón */
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-200">
 
-    <!-- ========== HEADER ========== -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <header class="header-transparent shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="#inicio" class="flex items-center">
-                        <!-- Logo de la empresa insertado aquí -->
                         <img class="h-24 w-auto" src="skynet_informaticas.png" alt="Logo de SKYNet Soluciones Informáticas">
                     </a>
                 </div>
 
-                <!-- Navegación para Desktop -->
                 <nav class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#inicio" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Inicio</a>
-                    <a href="#servicios" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Servicios</a>
-                    <a href="#nosotros" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Nosotros</a>
-                    <a href="#contacto" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300 font-medium shadow">Contacto</a>
+                    <a href="#inicio" class="text-gray-300 hover:text-accent-blue transition-colors duration-300 font-medium">Inicio</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-accent-blue transition-colors duration-300 font-medium">Servicios</a>
+                    <a href="#nosotros" class="text-gray-300 hover:text-accent-blue transition-colors duration-300 font-medium">Nosotros</a>
+                    <a href="#contacto" class="px-4 py-2 bg-accent-blue text-gray-900 rounded-md hover:bg-00A3D9 transition-colors duration-300 font-medium shadow-lg">Contacto</a>
                 </nav>
 
-                <!-- Botón de Menú para Móvil -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-accent-blue focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
@@ -63,176 +111,126 @@
             </div>
         </div>
 
-        <!-- Menú para Móvil (oculto por defecto) -->
-        <div id="mobile-menu" class="hidden md:hidden">
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/90 backdrop-blur-sm">
             <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
-                <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Inicio</a>
-                <a href="#servicios" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Servicios</a>
-                <a href="#nosotros" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Nosotros</a>
-                <a href="#contacto" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700">Contacto</a>
+                <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-accent-blue hover:bg-gray-800">Inicio</a>
+                <a href="#servicios" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-accent-blue hover:bg-gray-800">Servicios</a>
+                <a href="#nosotros" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-accent-blue hover:bg-gray-800">Nosotros</a>
+                <a href="#contacto" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 bg-accent-blue hover:bg-00A3D9">Contacto</a>
             </nav>
         </div>
     </header>
 
-    <!-- ========== MAIN CONTENT ========== -->
     <main>
 
-        <!-- ========== SECCIÓN INICIO (HERO) ========== -->
-        <section id="inicio" class="relative min-h-[60vh] md:min-h-[80vh] flex items-center bg-gray-800">
+        <section id="inicio" class="relative min-h-[60vh] md:min-h-[80vh] flex items-center bg-gray-950">
             <div class="absolute inset-0">
                 <img src="Picsart_25-07-28_02-16-31-837.jpg" 
-                     onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/111827/FFFFFF?text=Imagen+no+disponible';"
-                     alt="Banner de tecnología y redes" class="w-full h-full object-cover opacity-30">
+                    onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/111827/FFFFFF?text=Imagen+no+disponible';"
+                    alt="Banner de tecnología y redes" class="w-full h-full object-cover opacity-20">
             </div>
             <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
                 <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-                    <span class="text-blue-400">SKYNet</span> Soluciones Informáticas
+                    <span class="text-accent-blue">SKYNet</span> Soluciones Informáticas
                 </h1>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8">
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
                     Tu aliado estratégico en tecnología. Ofrecemos soluciones integrales para optimizar, proteger y potenciar tu infraestructura de TI.
                 </p>
-                <a href="#servicios" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 duration-300 shadow-lg">
+                <a href="#servicios" class="inline-block bg-accent-blue text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-00A3D9 transition-transform transform hover:scale-105 duration-300 shadow-lg">
                     Conoce Nuestros Servicios
                 </a>
             </div>
         </section>
 
-        <!-- ========== SECCIÓN SERVICIOS ========== -->
-        <section id="servicios" class="py-16 sm:py-24 bg-white section-fade-in">
+        <section id="servicios" class="py-16 sm:py-24 bg-gray-900 section-fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nuestros Servicios</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Soluciones tecnológicas a la medida de tus necesidades.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-100">Nuestros Servicios</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Soluciones tecnológicas a la medida de tus necesidades.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Servicio 1 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
-                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Mantenimiento de Equipos</h3>
-                        <p class="text-gray-600">Mantenimiento preventivo y correctivo para Laptops y PCs, garantizando su óptimo rendimiento y vida útil.</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-100">Mantenimiento de Equipos</h3>
+                        <p class="text-gray-300">Mantenimiento preventivo y correctivo para Laptops y PCs, garantizando su óptimo rendimiento y vida útil.</p>
                     </div>
-                    <!-- Servicio 2 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
-                           <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                           <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Asesoría y Software</h3>
-                        <p class="text-gray-600">Instalación y optimización remota de tu sistema operativo,paquetería, antivirus, software de diseño, CAD y programas administrativos.</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-100">Asesoría y Software</h3>
+                        <p class="text-gray-300">Instalación y optimización remota de tu sistema operativo, paquetería, antivirus, software de diseño, CAD y programas administrativos.</p>
                     </div>
-                    <!-- Servicio 3 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
-                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Sistemas Punto de Venta (POS)</h3>
-                        <p class="text-gray-600">Implementamos sistemas POS eficientes para agilizar tus ventas, controlar inventarios y gestionar tu negocio.</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-100">Sistemas Punto de Venta (POS)</h3>
+                        <p class="text-gray-300">Implementamos sistemas POS eficientes para agilizar tus ventas, controlar inventarios y gestionar tu negocio.</p>
                     </div>
-                    <!-- Servicio 4 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
-                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 9.393a15 15 0 0121.212 0"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 9.393a15 15 0 0121.212 0"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Redes y Conectividad</h3>
-                        <p class="text-gray-600">Instalación, administración y mantenimiento de redes, internet y enlaces inalámbricos (hotspots).</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-100">Redes y Conectividad</h3>
+                        <p class="text-gray-300">Instalación, administración y mantenimiento de redes, internet y enlaces inalámbricos (hotspots).</p>
                     </div>
-                    <!-- Servicio 5 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
-                            <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Control de Acceso</h3>
-                        <p class="text-gray-600">Sistemas de control de acceso biométricos o con tarjeta para garantizar la seguridad de tus instalaciones.</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-100">Control de Acceso</h3>
+                        <p class="text-gray-300">Sistemas de control de acceso biométricos o con tarjeta para garantizar la seguridad de tus instalaciones.</p>
                     </div>
-                    <!-- Servicio 6 -->
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-6">
-                             <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                               <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Videovigilancia (CCTV)</h3>
-                        <p class="text-gray-600">Instalación de cámaras de videovigilancia de alta definición para monitoreo y seguridad 24/7.</p>
+                        <h3 class="text-xl font-bold mb-3 text-gray-100">Videovigilancia (CCTV)</h3>
+                        <p class="text-gray-300">Instalación de cámaras de videovigilancia de alta definición para monitoreo y seguridad 24/7.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECCIÓN NOSOTROS (MISIÓN, VISIÓN, OBJETIVOS) ========== -->
-        <section id="nosotros" class="py-16 sm:py-24 bg-gray-50 section-fade-in">
+        <section id="nosotros" class="py-16 sm:py-24 bg-gray-950 section-fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nuestra Filosofía</h2>
-                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Los pilares que guían nuestro trabajo y compromiso contigo.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-100">Nuestra Filosofía</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Los pilares que guían nuestro trabajo y compromiso contigo.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <!-- Misión -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm">
-                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Misión</h3>
-                        <p class="text-gray-600">Proveer soluciones tecnológicas innovadoras y confiables que impulsen el crecimiento y la eficiencia de nuestros clientes, actuando siempre con profesionalismo, integridad y un enfoque en el servicio personalizado.</p>
+                    <div class="p-8 rounded-lg shadow-sm card-transparent">
+                        <h3 class="text-2xl font-bold text-accent-blue mb-4">Misión</h3>
+                        <p class="text-gray-300">Proveer soluciones tecnológicas innovadoras y confiables que impulsen el crecimiento y la eficiencia de nuestros clientes, actuando siempre con profesionalismo, integridad y un enfoque en el servicio personalizado.</p>
                     </div>
-                    <!-- Visión -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm">
-                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Visión</h3>
-                        <p class="text-gray-600">Ser la empresa líder en soluciones informáticas en la región, reconocida por nuestra excelencia, adaptabilidad y por construir relaciones a largo plazo basadas en la confianza y los resultados.</p>
+                    <div class="p-8 rounded-lg shadow-sm card-transparent">
+                        <h3 class="text-2xl font-bold text-accent-blue mb-4">Visión</h3>
+                        <p class="text-gray-300">Ser la empresa líder en soluciones informáticas en la región, reconocida por nuestra excelencia, adaptabilidad y por construir relaciones a largo plazo basadas en la confianza y los resultados.</p>
                     </div>
-                    <!-- Objetivos -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm">
-                        <h3 class="text-2xl font-bold text-blue-600 mb-4">Objetivos</h3>
-                        <p class="text-gray-600">Garantizar la satisfacción del cliente a través de un servicio rápido y efectivo. Mantenernos a la vanguardia tecnológica. Fomentar un crecimiento sostenible y expandir nuestra cartera de servicios.</p>
+                    <div class="p-8 rounded-lg shadow-sm card-transparent">
+                        <h3 class="text-2xl font-bold text-accent-blue mb-4">Objetivos</h3>
+                        <p class="text-gray-300">Garantizar la satisfacción del cliente a través de un servicio rápido y efectivo. Mantenernos a la vanguardia tecnológica. Fomentar un crecimiento sostenible y expandir nuestra cartera de servicios.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECCIÓN CONTACTO ========== -->
-        <section id="contacto" class="py-16 sm:py-24 bg-white section-fade-in">
+        <section id="contacto" class="py-16 sm:py-24 bg-gray-900 section-fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Contáctanos</h2>
-                        <p class="mt-4 text-lg text-gray-600">¿Listo para empezar? Envíanos un mensaje y te responderemos a la brevedad.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-100">Contáctanos</h2>
+                        <p class="mt-4 text-lg text-gray-400">¿Listo para empezar? Envíanos un mensaje y te responderemos a la brevedad.</p>
                     </div>
-                    <div class="bg-gray-50 p-8 sm:p-12 rounded-xl shadow-lg">
-                        <!-- El atributo action envía el formulario a un servicio como Formspree o a un endpoint de backend. -->
-             
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-  <style>
-    form {
-      max-width: 400px;
-      margin: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    input, textarea, button {
-      padding: 10px;
-      font-size: 16px;
-    }
-  </style>
-</head>
-<body>
-
-  <form id="contact-form">
-    <h2>Contáctanos</h2>
-    <input type="text" name="user_name" placeholder="Tu nombre" required>
-    <input type="email" name="user_email" placeholder="Tu correo" required>
-    <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
-    <button type="submit">Enviar</button>
-  </form>
-
-  <script>
-    // Inicializa EmailJS con tu PUBLIC_KEY
-    emailjs.init("mSSTd5B0dbkzSAaNB"); 
-
-    document.getElementById("contact-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      emailjs.sendForm("service_jy0ctci", "template_6m78k1o", this)
-        .then(() => alert("✅ ¡Mensaje enviado con éxito!"))
-        .catch((err) => alert("❌ Error: " + JSON.stringify(err)));
-    });
-  </script>
+                    <div class="p-8 sm:p-12 rounded-xl shadow-lg card-transparent">
+                        <form id="contact-form">
+                            <input type="text" name="user_name" placeholder="Tu nombre" required>
+                            <input type="email" name="user_email" placeholder="Tu correo" required>
+                            <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
+                            <button type="submit">Enviar</button>
                         </form>
                     </div>
                 </div>
@@ -241,25 +239,23 @@
 
     </main>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-gray-800 text-white">
+    <footer class="bg-gray-950 text-white">
         <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
             <p>© 2024 SKYNet Soluciones Informáticas. Todos los derechos reservados.</p>
-            <p class="text-gray-400 text-sm mt-2"></p>
+            <p class="text-gray-500 text-sm mt-2"></p>
         </div>
     </footer>
 
-    <!-- ========== BOTÓN FLOTANTE DE WHATSAPP ========== -->
     <a href="https://wa.me/5212284945696?text=Hola,%20me%20gustaría%20solicitar%20más%20información." 
-       target="_blank" 
-       rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 z-40">
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 z-40">
         <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.225 4.485 4.635-1.218z"/>
         </svg>
     </a>
 
-    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
     <script>
         // Script para el menú móvil
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -270,7 +266,7 @@
         });
 
         // Cerrar menú móvil al hacer clic en un enlace
-        document.querySelectorAll('#mobile-menu a, #mobile-menu a').forEach(link => {
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
@@ -289,6 +285,17 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        // EmailJS integration
+        emailjs.init("mSSTd5B0dbkzSAaNB"); 
+
+        document.getElementById("contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("service_jy0ctci", "template_6m78k1o", this)
+                .then(() => alert("✅ ¡Mensaje enviado con éxito!"))
+                .catch((err) => alert("❌ Error: " + JSON.stringify(err)));
         });
     </script>
 

@@ -66,11 +66,14 @@
             -webkit-backdrop-filter: blur(8px); /* Para compatibilidad con Safari */
         }
 
-        /* Ajuste para las cards de servicios/nosotros */
+        /* Estilo base para cards con transparencia */
         .card-transparent {
             background-color: rgba(30, 30, 30, 0.7); /* Gris oscuro con 70% de opacidad */
             border: 1px solid rgba(0, 191, 255, 0.2); /* Borde azul neón sutil */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra oscura */
+            position: relative; /* Necesario para posicionar el pseudo-elemento */
+            overflow: hidden; /* Para que la imagen no se salga de los bordes redondeados */
+            z-index: 1; /* Asegura que el contenido esté sobre la imagen */
         }
         .card-transparent:hover {
             box-shadow: 0 8px 12px rgba(0, 191, 255, 0.2); /* Sombra azul neón al hover */
@@ -81,6 +84,35 @@
         .text-accent-blue {
             color: #00BFFF; /* Azul neón */
         }
+
+        /* Estilo para la capa de imagen de fondo */
+        .card-background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08; /* Opacidad muy baja para la imagen de fondo */
+            z-index: -1; /* Manda la capa detrás del contenido */
+            transition: opacity 0.3s ease; /* Transición suave al cambiar la opacidad */
+        }
+
+        .card-transparent:hover .card-background-overlay {
+            opacity: 0.12; /* Ligeramente más visible al pasar el ratón */
+        }
+
+        /* Imágenes específicas para cada servicio (ejemplos) */
+        .service-1 .card-background-overlay { background-image: url('Mantenimiento.jpeg'); }
+        .service-2 .card-background-overlay { background-image: url('Software.jpg'); }
+        .service-3 .card-background-overlay { background-image: url('Pos.jpeg'); }
+        .service-4 .card-background-overlay { background-image: url('Redes.jpg'); }
+        .service-5 .card-background-overlay { background-image: url('ControlAcceso1'); }
+        .service-6 .card-background-overlay { background-image: url('cctv,jpg'); }
+
+        /* Puedes usar una imagen genérica para todas si prefieres */
+        /* .card-background-overlay { background-image: url('ruta/a/tu/imagen-fondo-generica.jpg'); } */
     </style>
 </head>
 <body class="text-gray-200">
@@ -90,7 +122,7 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#inicio" class="flex items-center">
-                        <img class="h-24 w-auto" src="skynet_informaticas.png" alt="Logo de SKYNet Soluciones Informáticas">
+                        <img class="h-30 w-auto" src="skynet_informaticas.png" alt="Logo de SKYNet Soluciones Informáticas">
                     </a>
                 </div>
 
@@ -149,47 +181,65 @@
                     <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Soluciones tecnológicas a la medida de tus necesidades.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
-                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-1">
+                        <div class="card-background-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Mantenimiento de Equipos</h3>
+                            <p class="text-gray-300">Mantenimiento preventivo y correctivo para Laptops y PCs, garantizando su óptimo rendimiento y vida útil.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-100">Mantenimiento de Equipos</h3>
-                        <p class="text-gray-300">Mantenimiento preventivo y correctivo para Laptops y PCs, garantizando su óptimo rendimiento y vida útil.</p>
                     </div>
-                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
-                           <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-2">
+                        <div class="card-background-overlay"></div>
+                        <div class="relative z-10">
+                           <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                               <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                           </div>
+                           <h3 class="text-xl font-bold mb-3 text-gray-100">Asesoría y Software</h3>
+                           <p class="text-gray-300">Instalación y optimización remota de tu sistema operativo, paquetería, antivirus, software de diseño, CAD y programas administrativos.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-100">Asesoría y Software</h3>
-                        <p class="text-gray-300">Instalación y optimización remota de tu sistema operativo, paquetería, antivirus, software de diseño, CAD y programas administrativos.</p>
                     </div>
-                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
-                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-3">
+                        <div class="card-background-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Sistemas Punto de Venta (POS)</h3>
+                            <p class="text-gray-300">Implementamos sistemas POS eficientes para agilizar tus ventas, controlar inventarios y gestionar tu negocio.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-100">Sistemas Punto de Venta (POS)</h3>
-                        <p class="text-gray-300">Implementamos sistemas POS eficientes para agilizar tus ventas, controlar inventarios y gestionar tu negocio.</p>
                     </div>
-                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
-                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 9.393a15 15 0 0121.212 0"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-4">
+                        <div class="card-background-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 9.393a15 15 0 0121.212 0"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Redes y Conectividad</h3>
+                            <p class="text-gray-300">Instalación, administración y mantenimiento de redes, internet y enlaces inalámbricos (hotspots).</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-100">Redes y Conectividad</h3>
-                        <p class="text-gray-300">Instalación, administración y mantenimiento de redes, internet y enlaces inalámbricos (hotspots).</p>
                     </div>
-                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
-                            <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-5">
+                        <div class="card-background-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Control de Acceso</h3>
+                            <p class="text-gray-300">Sistemas de control de acceso biométricos o con tarjeta para garantizar la seguridad de tus instalaciones.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-100">Control de Acceso</h3>
-                        <p class="text-gray-300">Sistemas de control de acceso biométricos o con tarjeta para garantizar la seguridad de tus instalaciones.</p>
                     </div>
-                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
-                               <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-6">
+                        <div class="card-background-overlay"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Videovigilancia (CCTV)</h3>
+                            <p class="text-gray-300">Instalación de cámaras de videovigilancia de alta definición para monitoreo y seguridad 24/7.</p>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-100">Videovigilancia (CCTV)</h3>
-                        <p class="text-gray-300">Instalación de cámaras de videovigilancia de alta definición para monitoreo y seguridad 24/7.</p>
                     </div>
                 </div>
             </div>

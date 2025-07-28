@@ -194,24 +194,45 @@
                     </div>
                     <div class="bg-gray-50 p-8 sm:p-12 rounded-xl shadow-lg">
                         <!-- El atributo action envía el formulario a un servicio como Formspree o a un endpoint de backend. -->
-                        <form action="mailto: grafiklandestampa2@gmail.com" method="post" enctype="text/plain" class="space-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-                                <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
-                                <textarea name="message" id="message" rows="5" required class="mt-1 block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="w-full sm:w-auto inline-flex justify-center py-3 px-12 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300">
-                                    Enviar Mensaje
-                                </button>
-                            </div>
+             
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+  <style>
+    form {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="contact-form">
+    <h2>Contáctanos</h2>
+    <input type="text" name="user_name" placeholder="Tu nombre" required>
+    <input type="email" name="user_email" placeholder="Tu correo" required>
+    <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    // Inicializa EmailJS con tu PUBLIC_KEY
+    emailjs.init("mSSTd5B0dbkzSAaNB"); 
+
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_jy0ctci", "ID:template_6m78k1o", this)
+        .then(() => alert("✅ ¡Mensaje enviado con éxito!"))
+        .catch((err) => alert("❌ Error: " + JSON.stringify(err)));
+    });
+  </script>
                         </form>
                     </div>
                 </div>

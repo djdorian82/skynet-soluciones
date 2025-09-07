@@ -123,24 +123,43 @@
 <body class="text-gray-200">
 
     <header class="header-transparent shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <a href="#inicio" class="flex items-center">
-                        <img class="h-20 w-auto" src="skynet_informaticas.png" alt="Logo de SKYNet Soluciones Informáticas">
-                    </a>
+        <div class="relative w-full">
+            <!-- Fondo animado gradiente -->
+            <div class="absolute inset-0 -z-10 animate-gradient bg-gradient-to-r from-blue-900 via-accent-blue to-blue-500 opacity-70"></div>
+            <!-- Canvas para partículas -->
+            <canvas id="particles-header" class="absolute inset-0 w-full h-full -z-10"></canvas>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between py-6 md:py-4">
+                <div class="flex-shrink-0 w-full md:w-auto flex justify-center md:justify-start mb-4 md:mb-0">
+                    <div class="flex flex-col items-center w-full">
+                        <img class="h-32 w-auto mx-auto drop-shadow-xl rounded-xl" src="logo.png" alt="Logo de SKYNet Soluciones Informáticas">
+                        <span class="mt-2 text-sm text-gray-400 font-medium italic">Innovación y tecnología para tu empresa</span>
+                        
+                    </div>
                 </div>
 
-                <nav class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#inicio" class="text-gray-300 hover:text-accent-blue transition-colors duration-300 font-medium">Inicio</a>
-                    <a href="#servicios" class="text-gray-300 hover:text-accent-blue transition-colors duration-300 font-medium">Servicios</a>
-                    <a href="#nosotros" class="text-gray-300 hover:text-accent-blue transition-colors duration-300 font-medium">Nosotros</a>
-                    <a href="#contacto" class="px-4 py-2 bg-accent-blue text-gray-900 rounded-md hover:bg-00A3D9 transition-colors duration-300 font-medium shadow-lg">Contacto</a>
+                <nav class="hidden md:flex md:items-center md:space-x-10">
+                    <a href="#inicio" class="flex items-center gap-2 text-gray-300 hover:text-accent-blue transition-colors duration-300 font-semibold text-lg">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"/></svg>
+                        Inicio
+                    </a>
+                    <a href="#servicios" class="flex items-center gap-2 text-gray-300 hover:text-accent-blue transition-colors duration-300 font-semibold text-lg">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18"/></svg>
+                        Servicios
+                    </a>
+                    <a href="#nosotros" class="flex items-center gap-2 text-gray-300 hover:text-accent-blue transition-colors duration-300 font-semibold text-lg">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Nosotros
+                    </a>
+                    <a href="#contacto" class="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-accent-blue to-blue-500 text-white rounded-full font-bold shadow-xl hover:from-blue-500 hover:to-accent-blue transition-all duration-300 text-lg border-2 border-accent-blue">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12v1a4 4 0 01-8 0v-1m8 0a4 4 0 00-8 0m8 0V8a4 4 0 00-8 0v4"/></svg>
+                        Contacto
+                    </a>
                 </nav>
 
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-300 hover:text-accent-blue focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
@@ -157,6 +176,58 @@
             </nav>
         </div>
     </header>
+    <style>
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+    </style>
+    <script>
+        // Partículas animadas en el header
+        window.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('particles-header');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w = canvas.width = canvas.offsetWidth;
+            let h = canvas.height = canvas.offsetHeight;
+            let particles = [];
+            const num = 30;
+            for (let i = 0; i < num; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: 8 + Math.random() * 12,
+                    dx: (Math.random() - 0.5) * 1.2,
+                    dy: (Math.random() - 0.5) * 1.2,
+                    color: `rgba(0,191,255,${0.2 + Math.random() * 0.3})`
+                });
+            }
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                for (let p of particles) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.x < 0 || p.x > w) p.dx *= -1;
+                    if (p.y < 0 || p.y > h) p.dy *= -1;
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+            window.addEventListener('resize', () => {
+                w = canvas.width = canvas.offsetWidth;
+                h = canvas.height = canvas.offsetHeight;
+            });
+        });
+    </script>
 
     <main>
 
@@ -195,6 +266,29 @@
                             </div>
                             <h3 class="text-xl font-bold mb-3 text-gray-100">Mantenimiento de Equipos</h3>
                             <p class="text-gray-300">Mantenimiento preventivo y correctivo para Laptops y PCs, garantizando su óptimo rendimiento y vida útil.</p>
+                        </div>
+                    </div>
+                    <!-- NUEVO SERVICIO: Cursos de Sistemas Operativos y Ofimática -->
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-7">
+                        <div class="card-background-overlay" style="background-image: url('high-tech-futuristic-digital-illustratio_7o6NQomoREyuPJPvVHDVLQ_-xTxRSc5QLWHuDd0scniaw.jpeg');"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 7v-6m0 0V7"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Cursos de Sistemas Operativos y Ofimática</h3>
+                            <p class="text-gray-300">Capacitación profesional en Windows, Linux, Office, Google Workspace y herramientas digitales. Para estudiantes, empresas, ayuntamientos y más.</p>
+                        </div>
+                    </div>
+                    <!-- NUEVO SERVICIO: Venta y Cotización de Equipos de Cómputo -->
+                    <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-8">
+                        <div class="card-background-overlay" style="background-image: url('skynet_informaticas.png'); opacity:0.12;"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-blue/20 mb-6">
+                                <svg class="h-8 w-8 text-accent-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 018 0v2m-4-6a4 4 0 100-8 4 4 0 000 8zm6 8v-2a6 6 0 00-12 0v2"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-100">Venta y Cotización de Equipos de Cómputo</h3>
+                            <p class="text-gray-300">Cotiza tus equipos según tus necesidades: laptops, PCs, servidores, accesorios y más. Soluciones personalizadas para empresas y particulares.</p>
+                            <a href="#contacto" class="mt-4 inline-block bg-accent-blue text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-00A3D9 transition-transform transform hover:scale-105 duration-300 shadow-lg">Solicita tu cotización</a>
                         </div>
                     </div>
                     <div class="p-8 rounded-xl shadow-md card-transparent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 service-2">
@@ -297,7 +391,7 @@
 
     <footer class="bg-gray-950 text-white">
         <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p>© 2024 SKYNet Soluciones Informáticas. Todos los derechos reservados.</p>
+            <p>© 2024 SKYNet Soluciones Informáticas. Todos los derechos reservados.Dorian CG ©</p>
             <p class="text-gray-500 text-sm mt-2"></p>
         </div>
     </footer>
